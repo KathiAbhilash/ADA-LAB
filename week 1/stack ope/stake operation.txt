@@ -1,0 +1,27 @@
+char** buildArray(int* target, int targetSize, int n, int* returnSize) {
+
+    char **ans = (char **)malloc(sizeof(char *) * (targetSize + ((n - targetSize) * 2)));
+    int len = 0;
+    
+    for (int i = 1, idx = 0; i <= target[targetSize - 1]; i++) {
+
+        if (i == target[idx]) {
+            ans[len] = (char *)malloc(sizeof(char) * 5);
+            strcpy(ans[len], "Push");
+            len++;
+            idx++;
+        }
+        
+        else {
+            ans[len] = (char *)malloc(sizeof(char) * 5);
+            ans[len + 1] = (char *)malloc(sizeof(char) * 4);
+            strcpy(ans[len], "Push");
+            strcpy(ans[len + 1], "Pop");
+            len += 2;
+        }
+    }
+
+    *returnSize = len;
+
+    return ans;
+}
